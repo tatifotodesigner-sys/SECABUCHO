@@ -1,0 +1,51 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Informações detalhadas do perfil do usuário, metas e preferências.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["Master Admin", "Admin", "Afiliado", "Parceiro", "member"] },
+        "status": { "type": "string", "enum": ["active", "inactive"] },
+        "age": { "type": "number" },
+        "gender": { "type": "string", "enum": ["Masculino", "Feminino", "Outro"] },
+        "healthGoal": { "type": "string", "enum": ["Perda de Peso", "Ganho de Massa", "Manutenção"] },
+        "targetWeight": { "type": "number" },
+        "lossPace": { "type": "string", "enum": ["Lento", "Moderado", "Rápido"] },
+        "skinType": { "type": "string", "enum": ["Seca", "Oleosa", "Mista", "Normal"] },
+        "beautyConcerns": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Produtos Seca Bucho para venda.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "imageUrl": { "type": "string" },
+        "salesUrl": { "type": "string" },
+        "category": { "type": "string", "enum": ["emagrecimento", "beleza", "saude"] }
+      },
+      "required": ["name", "salesUrl"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Perfis de usuários"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Catálogo de produtos"
+    }
+  }
+}
