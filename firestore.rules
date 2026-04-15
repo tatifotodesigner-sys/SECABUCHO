@@ -27,5 +27,35 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isAdmin();
     }
+
+    // Category Rules
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Banner Rules
+    match /banners/{bannerId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Social Links Rules
+    match /social_links/{linkId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Article Rules
+    match /articles/{articleId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Config Rules
+    match /configs/{configId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
   }
 }
